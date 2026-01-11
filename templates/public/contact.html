@@ -1,14 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Contact — Techkamau{% endblock %}
-
 {% block content %}
+
 <section class="section">
   <h2 class="section-title">Get in Touch</h2>
 
   <div class="contact-actions">
     <a
       href="mailto:kamauthetech@gmail.com"
-      class="btn contact-btn"
+      class="btn primary"
     >
       Email me
     </a>
@@ -16,7 +15,7 @@
     <a
       href="{{ contact.github }}"
       target="_blank"
-      class="btn contact-btn"
+      class="btn primary"
     >
       GitHub
     </a>
@@ -24,10 +23,11 @@
     <a
       href="{{ contact.linkedin }}"
       target="_blank"
-      class="btn contact-btn"
+      class="btn primary"
     >
       LinkedIn
     </a>
   </div>
 </section>
+
 {% endblock %}
