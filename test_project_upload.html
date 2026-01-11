@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Project File</title>
+</head>
+<body>
+
+<h2>Upload Project File</h2>
+
+<form
+  action="http://127.0.0.1:5000/admin/upload-project-file"
+  method="POST"
+  enctype="multipart/form-data"
+>
+
+  <label>
+    Project File:
+    <input type="file" name="file" required />
+  </label>
+
+  <br /><br />
+
+  <label>
+    Description:
+    <textarea
+      name="description"
+      rows="4"
+      cols="50"
+      placeholder="Describe what this file represents and what you did"
+      required
+    ></textarea>
+  </label>
+
+  <br /><br />
+
+  <button type="submit">Upload Project</button>
+
+</form>
+
+</body>
+</html>

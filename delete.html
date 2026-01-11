@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Project</title>
+</head>
+<body>
+
+<h2>Delete Project File</h2>
+
+<form
+  action="http://127.0.0.1:5000/admin/delete-project"
+  method="POST"
+>
+
+  <label>
+    Exact Filename:
+    <input
+      type="text"
+      name="filename"
+      placeholder="example.csv"
+      required
+    >
+  </label>
+
+  <br><br>
+
+  <button type="submit" style="color:red;">
+    Delete Project
+  </button>
+
+</form>
+
+<p><strong>⚠ Warning:</strong> This action cannot be undone.</p>
+
+</body>
+</html>
+

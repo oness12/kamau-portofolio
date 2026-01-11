@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      background:#020617;
+      color:#e5e7eb;
+      font-family:Arial;
+      max-width:1000px;
+      margin:40px auto;
+    }
+    h1, h2 {
+      border-bottom:1px solid #1e293b;
+      padding-bottom:5px;
+    }
+    textarea {
+      width:100%;
+      background:#020617;
+      color:#e5e7eb;
+      border:1px solid #334155;
+      padding:8px;
+    }
+    input, button {
+      padding:8px;
+      margin-top:6px;
+    }
+    button {
+      background:#2563eb;
+      border:none;
+      color:white;
+      cursor:pointer;
+    }
+    .danger {
+      background:#dc2626;
+    }
+    .card {
+      background:#020617;
+      border:1px solid #1e293b;
+      padding:15px;
+      margin-bottom:20px;
+      border-radius:6px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<!-- Upload Project -->
+<h2>Upload Project</h2>
+<form action="/admin/upload-project-file" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" required><br><br>
+  <textarea name="description" rows="3" placeholder="Project description" required></textarea><br>
+  <button type="submit">Upload</button>
+</form>
+
+<!-- Existing Projects -->
+<h2>Projects</h2>
+
+{% for file in files %}
+<div class="card">
+  <strong>{{ file }}</strong>
+
+  <form action="/admin/edit-description" method="POST">
+    <input type="hidden" name="filename" value="{{ file }}">
+    <textarea name="description" rows="3">{{ descriptions.get(file, "") }}</textarea>
+    <button type="submit">Save Description</button>
+  </form>
+
+  <form action="/admin/delete-project" method="POST">
+    <input type="hidden" name="filename" value="{{ file }}">
+    <button type="submit" class="danger">Delete</button>
+  </form>
+</div>
+{% endfor %}
+
+<!-- Upload CV -->
+<h2>Upload CV</h2>
+<form action="/admin/upload-cv" method="POST" enctype="multipart/form-data">
+  <input type="file" name="cv" required>
+  <button type="submit">Upload CV</button>
+</form>
+
+</body>
+</html>
