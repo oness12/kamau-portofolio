@@ -16,7 +16,7 @@ app = Flask(__name__)
 # =========================
 # SECURITY (LOCAL ADMIN)
 # =========================
-app.secret_key = "local-admin-secret"   # change if you want
+app.secret_key = "local-admin-secret"   # 🔒 change later if you want
 ADMIN_PIN = "1234"                      # 🔒 change this PIN
 
 # =========================
@@ -129,7 +129,7 @@ def projects():
     for item in os.listdir(PROJECTS_DIR):
         path = os.path.join(PROJECTS_DIR, item)
 
-        # Ignore folders (old system remnants)
+        # Only files (ignore folders)
         if not os.path.isfile(path):
             continue
 
@@ -165,6 +165,7 @@ def download_cv():
     files = os.listdir(CV_DIR)
     if not files:
         abort(404)
+
     return send_from_directory(
         CV_DIR,
         files[0],
@@ -178,9 +179,11 @@ def download_cv():
 def admin_login():
     if request.method == "POST":
         pin = request.form.get("pin")
+
         if pin == ADMIN_PIN:
             session["admin"] = True
             return redirect("/admin")
+
         return render_template(
             "admin/login.html",
             error="Invalid PIN"
@@ -189,7 +192,7 @@ def admin_login():
     return render_template("admin/login.html")
 
 # =========================
-# ADMIN DASHBOARD
+# ADMIN DASHBOARD  ✅ (THIS WAS MISSING BEFORE)
 # =========================
 @app.route("/admin")
 def admin_dashboard():
@@ -276,10 +279,7 @@ def delete_project():
         return {"error": "File not found"}, 404
 
     try:
-        if os.path.isfile(path):
-            os.remove(path)
-        elif os.path.isdir(path):
-            shutil.rmtree(path)
+        os.remove(path)
     except PermissionError:
         return {"error": "Permission denied"}, 500
 
@@ -312,14 +312,8 @@ def upload_cv():
     return redirect("/admin")
 
 # =========================
-# START SERVER
+# START SERVER (RAILWAY SAFE)
 # =========================
-
-import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
-
-

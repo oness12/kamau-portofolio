@@ -1,49 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const page = document.querySelector(".page");
-  const themeToggle = document.getElementById("theme-toggle");
-  const hamburger = document.getElementById("hamburger");
-  const mobileMenu = document.getElementById("mobileMenu");
 
-  /* Page fade-in */
-  if (page) {
-    requestAnimationFrame(() => {
-      page.classList.add("loaded");
-    });
-  }
-
-  /* Theme toggle */
-  if (themeToggle) {
-    const currentTheme = localStorage.getItem("theme") || "dark";
-    document.documentElement.setAttribute("data-theme", currentTheme);
-
-    themeToggle.addEventListener("click", () => {
-      const newTheme =
-        document.documentElement.getAttribute("data-theme") === "dark"
-          ? "light"
-          : "dark";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-    });
-  }
-
-  /* Mobile menu */
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
-    });
-
-    mobileMenu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-      });
-    });
-  }
-
-  /* Skill bars animation */
+  // Skills animation
   document.querySelectorAll(".skill-fill").forEach(bar => {
-    const level = bar.getAttribute("data-level");
-    if (level) {
-      bar.style.width = level + "%";
-    }
+    bar.style.width = bar.dataset.level + "%";
   });
+
+  // Mobile menu
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("mobileMenu");
+
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+  }
+
+  // Pie chart
+  const ctx = document.getElementById("analyticsPieChart");
+  if (ctx) {
+    new Chart(ctx, {
+      type:"pie",
+      data:{
+        labels:["Cleaning","EDA","Visualization","Reporting","SQL"],
+        datasets:[{
+          data:[30,25,20,15,10],
+          backgroundColor:["#5c7cfa","#4dabf7","#63e6be","#ffd43b","#ff8787"]
+        }]
+      }
+    });
+  }
+
 });
