@@ -1,53 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onesmas Kamau | Data Analyst Portfolio</title>
-
+  <meta charset="UTF-8">
+  <title>Tech Kamau | Data Analyst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div class="page">
 
-<!-- ================= HEADER / HERO ================= -->
 <header class="hero">
-
-  <!-- NAVIGATION -->
   <nav class="nav">
-    <a href="/" class="brand">Home</a>
-
-    <div class="nav-right desktop-nav">
-      <a href="/contact" class="nav-link">Contact</a>
-      <a href="/about" class="nav-link">About Me</a>
+    <a href="/" class="brand">Tech Kamau</a>
+    <div class="nav-right">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="/about" class="nav-link">About</a>
       <a href="/projects" class="nav-link">Projects</a>
+      <a href="/contact" class="nav-link">Contact</a>
       <a href="/resume" class="nav-link">CV</a>
-      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button id="theme-toggle">🌙</button>
     </div>
-
-    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
   </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="/contact">Contact</a>
-    <a href="/about">About Me</a>
-    <a href="/projects">Projects</a>
-    <a href="/resume">CV</a>
-  </div>
-
-  <!-- HERO CONTENT -->
   <div class="hero-content">
-    <h1 class="hero-name">Onesmas Kamau</h1>
+    <h1 class="hero-name">Tech Kamau</h1>
     <h2 class="hero-role">Data Analyst | Economics Graduate</h2>
-
     <p class="hero-tagline">
-      Turning complex datasets into clear, actionable insights using
-      Python, SQL, Excel, and Tableau to support better business decisions.
+      Turning complex datasets into clear, actionable insights using Python, SQL, Excel, and Tableau.
     </p>
 
     <div class="hero-actions">
@@ -55,159 +35,14 @@
       <a href="/cv" class="btn secondary">Download CV</a>
     </div>
   </div>
-
 </header>
 
-<!-- ================= KEY STRENGTHS ================= -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Key Strengths</h2>
-
-    <div class="strengths-grid">
-      <div class="strength-item">
-        <h3>Data Cleaning</h3>
-        <p>Preparing accurate, analysis-ready datasets</p>
-      </div>
-      <div class="strength-item">
-        <h3>Exploratory Analysis</h3>
-        <p>Identifying patterns, trends, and insights</p>
-      </div>
-      <div class="strength-item">
-        <h3>Visualization</h3>
-        <p>Dashboards and storytelling with data</p>
-      </div>
-      <div class="strength-item">
-        <h3>Business Insight</h3>
-        <p>Supporting economic and strategic decisions</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TECHNICAL SKILLS ================= -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Technical Skills</h2>
-
-    <p class="section-intro">
-      Tools and technologies I use daily in data analysis workflows.
-    </p>
-
-    <div class="skills-group">
-      <div class="skill">
-        <span class="skill-name">Python</span>
-        <div class="skill-bar">
-          <div class="skill-fill" data-level="90"></div>
-        </div>
-      </div>
-
-      <div class="skill">
-        <span class="skill-name">SQL</span>
-        <div class="skill-bar">
-          <div class="skill-fill" data-level="85"></div>
-        </div>
-      </div>
-
-      <div class="skill">
-        <span class="skill-name">Excel</span>
-        <div class="skill-bar">
-          <div class="skill-fill" data-level="90"></div>
-        </div>
-      </div>
-
-      <div class="skill">
-        <span class="skill-name">Tableau</span>
-        <div class="skill-bar">
-          <div class="skill-fill" data-level="80"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DATA ANALYTICS FOCUS ================= -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Data Analytics Focus</h2>
-
-    <p class="section-intro">
-      How my time is typically distributed across core analytics activities.
-    </p>
-
-    <div class="chart-wrapper">
-      <canvas id="analyticsPieChart"></canvas>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FEATURED PROJECTS ================= -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
-
-    <div class="projects-grid">
-      {% for project in projects %}
-      <article class="project-card">
-        <h3 class="project-title">{{ project.title }}</h3>
-        <p class="project-description">{{ project.description }}</p>
-      </article>
-      {% endfor %}
-    </div>
-
-    <div style="margin-top: 40px;">
-      <a href="/projects" class="btn secondary">View All Projects</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="container">
-    <p>© {{ year }} Onesmas Kamau</p>
-  </div>
+  <p>© {{ year }}</p>
 </footer>
 
 </div>
 
 <script src="{{ url_for('static', filename='main.js') }}"></script>
-
-<!-- ================= PIE CHART SCRIPT ================= -->
-<script>
-  const pieCtx = document.getElementById('analyticsPieChart');
-
-  if (pieCtx) {
-    new Chart(pieCtx, {
-      type: 'pie',
-      data: {
-        labels: [
-          'Data Cleaning',
-          'Exploratory Analysis',
-          'Visualization',
-          'Reporting',
-          'SQL Extraction'
-        ],
-        datasets: [{
-          data: [30, 25, 20, 15, 10],
-          backgroundColor: [
-            '#5c7cfa',
-            '#4dabf7',
-            '#63e6be',
-            '#ffd43b',
-            '#ff8787'
-          ]
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom'
-          }
-        }
-      }
-    });
-  }
-</script>
-
 </body>
 </html>

@@ -1,110 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects</title>
-
+  <meta charset="UTF-8">
+  <title>Projects | Tech Kamau</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="page">
 
-<!-- ================= HEADER ================= -->
 <header class="hero">
   <nav class="nav">
-    <div class="nav-left">
-      <a href="/" class="brand">Home</a>
-    </div>
+    <a href="/" class="brand">Tech Kamau</a>
     <div class="nav-right">
-      <a href="/contact" class="nav-link">Contact</a>
-      <a href="/about" class="nav-link">About Me</a>
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link">About</a>
       <a href="/projects" class="nav-link active">Projects</a>
+      <a href="/contact" class="nav-link">Contact</a>
       <a href="/resume" class="nav-link">CV</a>
-      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
-
-  <div class="hero-content">
-    <h1 class="hero-name">Projects</h1>
-    <p class="hero-tagline">
-      Data analysis projects using Python, SQL, Excel, Tableau, and PDF reports.
-    </p>
-  </div>
 </header>
 
-<!-- ================= PROJECT FILES ================= -->
 <section class="section">
-  <h2 class="section-title">Project Files</h2>
+  <h2 class="section-title">Projects</h2>
 
   {% if files %}
-    <div class="project-files">
-
-      {% for file in files %}
-      <article class="project-file-card">
-
-        <!-- File name + icon -->
-        <h3 class="file-name">
-          {% if file.endswith('.xlsx') or file.endswith('.xls') %}
-            📊
-          {% elif file.endswith('.py') %}
-            🐍
-          {% elif file.endswith('.sql') %}
-            🗄️
-          {% elif file.endswith('.twb') or file.endswith('.twbx') %}
-            📈
-          {% elif file.endswith('.pdf') %}
-            📄
-          {% else %}
-            📁
-          {% endif %}
-          {{ file }}
-        </h3>
-
-        <!-- Description -->
-        <p class="project-description">
-          {{ descriptions.get(file, "No description available for this project.") }}
-        </p>
-
-        <!-- PDF Preview -->
-        {% if file.lower().endswith('.pdf') %}
-          <iframe
-            src="/uploads/projects/{{ file }}"
-            class="file-preview"
-            loading="lazy"
-          ></iframe>
-        {% else %}
-          <p class="no-preview">
-            Preview not available for this file type.
-          </p>
-        {% endif %}
-
-        <!-- Download -->
-        <a
-          href="/uploads/projects/{{ file }}"
-          class="btn secondary"
-          download
-        >
-          Download
-        </a>
-
-      </article>
-      {% endfor %}
-
+  <div class="projects-grid">
+    {% for file in files %}
+    <div class="project-card">
+      <h3>{{ file }}</h3>
+      <p class="project-description">
+        {{ descriptions.get(file, "No description available.") }}
+      </p>
+      <a href="/uploads/projects/{{ file }}" class="project-link" download>
+        Download →
+      </a>
     </div>
+    {% endfor %}
+  </div>
   {% else %}
-    <p>No project files uploaded yet.</p>
+    <p>No projects uploaded yet.</p>
   {% endif %}
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p>© {{ year }}</p>
 </footer>
 
 </div>
 
-<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
