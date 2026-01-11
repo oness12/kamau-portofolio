@@ -1,43 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tech Kamau | Data Analyst</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div class="page">
 
-<nav class="nav">
-  <a href="/" class="brand">Tech Kamau</a>
-  <div class="nav-right">
-    <a href="/" class="active">Home</a>
-    <a href="/about">About</a>
-    <a href="/projects">Projects</a>
-    <a href="/contact">Contact</a>
-    <a href="/resume">CV</a>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="brand">Tech Kamau</a>
+    <div class="nav-right">
+      <a href="/" class="active">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume">CV</a>
+    </div>
+  </nav>
 
-<section class="hero-content">
-  <h1 class="hero-name">Tech Kamau</h1>
-  <h2 class="hero-role">Data Analyst | Economics Graduate</h2>
-  <p class="hero-tagline">
-    Turning complex datasets into clear, actionable insights using Python, SQL, Excel, and Tableau.
-  </p>
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-name">Tech Kamau</h1>
+    <h2 class="hero-role">Data Analyst | Economics Graduate</h2>
+    <p class="hero-tagline">
+      Turning complex datasets into clear, actionable insights using
+      Python, SQL, Excel, and Tableau.
+    </p>
 
-  <div class="hero-actions">
-    <a href="/projects" class="btn">View Projects</a>
-    <a href="/cv" class="btn">Download CV</a>
-  </div>
-</section>
+    <div class="hero-actions">
+      <a href="/projects" class="btn">View Projects</a>
+      <a href="/cv" class="btn">Download CV</a>
+    </div>
+  </section>
 
-<footer class="footer">
-  © {{ year }}
-</footer>
+  <!-- CORE STRENGTHS -->
+  <section class="section">
+    <h2 class="section-title">Core Strengths</h2>
+
+    <div class="strengths-grid">
+      <div class="strength-item">Data Cleaning & Preparation</div>
+      <div class="strength-item">Exploratory Data Analysis</div>
+      <div class="strength-item">Dashboards & Reporting</div>
+      <div class="strength-item">Business & Economic Insights</div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div class="skills-group">
+      <div class="skill">
+        <span class="skill-name">Python</span>
+        <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+      </div>
+
+      <div class="skill">
+        <span class="skill-name">SQL</span>
+        <div class="skill-bar"><div class="skill-fill" data-level="85"></div></div>
+      </div>
+
+      <div class="skill">
+        <span class="skill-name">Excel</span>
+        <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+      </div>
+
+      <div class="skill">
+        <span class="skill-name">Tableau</span>
+        <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYTICS FOCUS -->
+  <section class="section">
+    <h2 class="section-title">Data Analytics Focus</h2>
+
+    <div class="chart-wrapper">
+      <canvas id="analyticsChart"></canvas>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © {{ year }}
+  </footer>
 
 </div>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+<script>
+  const ctx = document.getElementById("analyticsChart");
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Data Cleaning", "EDA", "Visualization", "Reporting", "SQL"],
+      datasets: [{
+        data: [30, 25, 20, 15, 10],
+        backgroundColor: ["#5c7cfa", "#4dabf7", "#63e6be", "#ffd43b", "#ff8787"]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { position: "bottom" }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>

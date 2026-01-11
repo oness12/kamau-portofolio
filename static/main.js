@@ -1,3 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Tech Kamau loaded");
+  document.querySelectorAll(".skill-fill").forEach(bar => {
+    const level = bar.dataset.level;
+    bar.style.width = level + "%";
+  });
 });
