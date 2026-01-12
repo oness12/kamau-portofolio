@@ -1,0 +1,61 @@
+name: Playwright tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Playwright CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        if: "exists('requirements.txt')"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install npm dependencies
+        run: |
+          npm ci || npm install
+          npx playwright install --with-deps
+
+      - name: Start Flask app
+        run: |
+          # Start the app in background; app.py should use host 127.0.0.1:5000 by default
+          python -u app.py &> server.log &
+          # wait until server responds
+          for i in {1..30}; do
+            if curl -sSf http://127.0.0.1:5000 >/dev/null 2>&1; then
+              echo "Server is up"; break
+            fi
+            sleep 1
+          done
+
+      - name: Run Playwright tests
+        env:
+          BASE_URL: http://127.0.0.1:5000
+        run: |
+          npm test --silent
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report

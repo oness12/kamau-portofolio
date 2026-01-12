@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
 </head>
 <body>
 
 <div class="page">
-  <header class="header">
-    <div class="header-inner container">
-      <a href="/" class="brand">Tech Kamau</a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/projects">Projects</a>
-        <a href="/contact">Contact</a>
-        <a href="/resume">CV</a>
+  <header class="hero">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="brand">Tech Kamau</a>
+        <div class="nav-links desktop-nav">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/projects">Projects</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume">CV</a>
+          <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false">☰</button>
       </div>
+    </nav>
+
+    <div class="sidebar" id="sidebar" role="menu" aria-hidden="true">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume">CV</a>
     </div>
   </header>
 
@@ -68,5 +83,6 @@
 </div>
 </div>
 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

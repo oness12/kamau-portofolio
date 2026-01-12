@@ -403,6 +403,23 @@ select:focus-visible {
 }
 
 /* ================= CV VIEWER ================= */
+/* ================= CHARTS ================= */
+.chart-wrapper {
+  max-width: 720px;
+  margin: 12px auto 0;
+  padding: 8px;
+}
+
+.chart-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (min-width: 1400px) {
+  .chart-wrapper { max-width: 900px; }
+}
+
 .cv-card {
   display: flex;
   gap: 20px;

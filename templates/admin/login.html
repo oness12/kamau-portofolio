@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body style="background:#020617;color:#e5e7eb;font-family:Arial;max-width:400px;margin:120px auto;">
+<body>
 
-<h2>Admin Login</h2>
+<main class="container" style="max-width:420px;margin:80px auto;">
+  <h2>Admin Login</h2>
 
-<form method="POST">
-  <input type="password" name="pin" placeholder="Admin PIN" required>
-  <button type="submit">Login</button>
-</form>
+  <form method="POST">
+    <input type="password" name="pin" placeholder="Admin PIN" required>
+    <button class="btn primary" type="submit">Login</button>
+  </form>
 
-{% if error %}
-<p style="color:#f87171;">{{ error }}</p>
-{% endif %}
+  {% if error %}
+  <p style="color:#f87171;">{{ error }}</p>
+  {% endif %}
+</main>
 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

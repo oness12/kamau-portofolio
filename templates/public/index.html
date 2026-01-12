@@ -125,15 +125,17 @@
           ]
         }]
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "bottom",
-            labels: { color: "#a0a4b8" }
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { color: "#a0a4b8" }
+            }
           }
         }
-      }
     });
   }
 </script>
