@@ -201,6 +201,25 @@ def upload_cv():
 
     return redirect("/admin")
 
+@app.route("/admin/edit-description", methods=["POST"])
+def edit_description():
+    if not session.get("admin"):
+        abort(403)
+
+    filename = request.form.get("filename")
+    description = request.form.get("description", "").strip()
+
+    if not filename:
+        abort(400)
+
+    descriptions = load_descriptions()
+    descriptions[filename] = description
+
+    with open(PROJECT_DESCRIPTIONS_JSON, "w") as f:
+        json.dump(descriptions, f, indent=2)
+
+    return redirect("/admin")
+
 # =========================
 # SERVER
 # =========================

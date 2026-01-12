@@ -12,15 +12,27 @@
 
 <header class="hero">
   <nav class="nav">
-    <a href="/" class="brand">Tech Kamau</a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/projects">Projects</a>
-      <a href="/contact" class="active">Contact</a>
-      <a href="/resume">CV</a>
+    <div class="nav-inner">
+      <a href="/" class="brand">Tech Kamau</a>
+      <div class="nav-links desktop-nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact" class="active">Contact</a>
+        <a href="/resume">CV</a>
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/contact" class="active">Contact</a>
+    <a href="/resume">CV</a>
+  </div>
 
   <div class="hero-content">
     <h1>Get in Touch</h1>
@@ -29,9 +41,9 @@
 </header>
 
 <section class="section contact-actions">
-  <a class="btn primary" href="mailto:kamauthetech@gmail.com">Email me</a>
-  <a class="btn secondary" href="{{ contact.github }}" target="_blank">GitHub</a>
-  <a class="btn secondary" href="{{ contact.linkedin }}" target="_blank">LinkedIn</a>
+  <a class="btn primary" href="mailto:{{ contact.email }}">Email me</a>
+  <a class="btn secondary" href="{{ contact.github }}" target="_blank" rel="noopener">GitHub</a>
+  <a class="btn secondary" href="{{ contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
 </section>
 
 <footer class="footer">
@@ -40,5 +52,6 @@
 
 </div>
 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
