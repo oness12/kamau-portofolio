@@ -21,6 +21,7 @@ ADMIN_PIN = "1234"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 UPLOADS_DIR = os.path.join(BASE_DIR, "uploads")
+
 PROJECTS_DIR = os.path.join(UPLOADS_DIR, "projects")
 CV_DIR = os.path.join(UPLOADS_DIR, "cv")
 
@@ -79,7 +80,9 @@ def contact():
 @app.route("/projects")
 def projects():
     descriptions = load_descriptions()
-    files = sorted(os.listdir(PROJECTS_DIR))
+    files = sorted(
+        [f for f in os.listdir(PROJECTS_DIR) if os.path.isfile(os.path.join(PROJECTS_DIR, f))]
+    )
 
     return render_template(
         "public/projects.html",
@@ -88,6 +91,23 @@ def projects():
         year=2026
     )
 
+# =========================
+# CV PAGES (FIXED)
+# =========================
+@app.route("/resume")
+def resume():
+    return render_template("public/resume.html", year=2026)
+
+@app.route("/cv")
+def serve_cv():
+    files = os.listdir(CV_DIR)
+    if not files:
+        abort(404)
+    return send_from_directory(CV_DIR, files[0])
+
+# =========================
+# FILE SERVING
+# =========================
 @app.route("/uploads/projects/<filename>")
 def serve_project(filename):
     return send_from_directory(PROJECTS_DIR, filename, as_attachment=True)
@@ -160,6 +180,24 @@ def delete_project():
 
     with open(PROJECT_DESCRIPTIONS_JSON, "w") as f:
         json.dump(descriptions, f, indent=2)
+
+    return redirect("/admin")
+
+@app.route("/admin/upload-cv", methods=["POST"])
+def upload_cv():
+    if not session.get("admin"):
+        abort(403)
+
+    file = request.files.get("cv")
+    if not file:
+        abort(400)
+
+    # Only one CV allowed
+    for f in os.listdir(CV_DIR):
+        os.remove(os.path.join(CV_DIR, f))
+
+    ext = os.path.splitext(file.filename)[1]
+    file.save(os.path.join(CV_DIR, f"cv{ext}"))
 
     return redirect("/admin")
 
