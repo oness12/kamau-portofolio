@@ -2,42 +2,36 @@
 <html>
 <head>
   <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body style="background:#020617;color:#e5e7eb;font-family:Arial;max-width:1000px;margin:40px auto;">
+<body class="admin">
 
 <h1>Admin Dashboard</h1>
 
-<h2>Upload Project</h2>
-<form action="/admin/upload-project-file" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" required>
-  <textarea name="description" rows="3" placeholder="Description" required></textarea>
-  <button type="submit">Upload</button>
-</form>
-
-<h2>Projects</h2>
-
-{% for file in files %}
-<div style="border:1px solid #1e293b;padding:14px;margin-bottom:20px;">
-  <strong>{{ file }}</strong>
-
-  <form action="/admin/edit-description" method="POST">
-    <input type="hidden" name="filename" value="{{ file }}">
-    <textarea name="description">{{ descriptions.get(file, "") }}</textarea>
-    <button type="submit">Save</button>
+<section class="admin-card">
+  <h2>Upload Project</h2>
+  <form method="POST" enctype="multipart/form-data" action="/admin/upload-project-file">
+    <input type="file" name="file" required>
+    <textarea name="description" placeholder="Project description" required></textarea>
+    <button type="submit">Upload</button>
   </form>
+</section>
 
-  <form action="/admin/delete-project" method="POST">
-    <input type="hidden" name="filename" value="{{ file }}">
-    <button style="background:#dc2626;">Delete</button>
-  </form>
-</div>
-{% endfor %}
+<section>
+  <h2>Existing Projects</h2>
 
-<h2>Upload CV</h2>
-<form action="/admin/upload-cv" method="POST" enctype="multipart/form-data">
-  <input type="file" name="cv" required>
-  <button type="submit">Upload CV</button>
-</form>
+  {% for file in files %}
+  <div class="admin-project">
+    <strong>{{ file }}</strong>
+    <p>{{ descriptions.get(file, "") }}</p>
+
+    <form method="POST" action="/admin/delete-project">
+      <input type="hidden" name="filename" value="{{ file }}">
+      <button class="danger">Delete</button>
+    </form>
+  </div>
+  {% endfor %}
+</section>
 
 </body>
 </html>
