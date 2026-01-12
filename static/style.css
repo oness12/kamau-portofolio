@@ -473,3 +473,13 @@ body {
     display: block;
   }
 }
+.about-content {
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.about-content p {
+  margin-bottom: 18px;
+  color: var(--muted);
+}
