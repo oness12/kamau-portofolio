@@ -275,10 +275,12 @@ body {
 }
 
 .project-card {
+  display: flex;
+  gap: 16px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 22px;
+  padding: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
