@@ -1,49 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Projects | Tech Kamau</title>
+  <meta charset="UTF-8">
+  <title>Projects — Tech Kamau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="page">
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/projects">Projects</a>
+  <a href="/contact">Contact</a>
+  <a href="/resume">CV</a>
+</div>
 
-<nav class="nav">
-  <a href="/" class="brand">Tech Kamau</a>
-  <div class="nav-right">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/projects" class="active">Projects</a>
-    <a href="/contact">Contact</a>
-    <a href="/resume">CV</a>
+<!-- NAV (SAME AS HOME) -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand">Tech Kamau</a>
+
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects" class="active">Projects</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume">CV</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger">☰</button>
   </div>
-</nav>
+</header>
 
-<section class="section">
-  <h2 class="section-title">Projects</h2>
+<main class="container">
 
-  {% if files %}
-  <div class="projects-grid">
-    {% for file in files %}
-    <div class="project-card">
-      <h3>{{ file }}</h3>
-      <p class="project-description">
-        {{ descriptions.get(file, "No description provided.") }}
-      </p>
-      <a href="/uploads/projects/{{ file }}" class="project-link">Download →</a>
+  <section class="section">
+    <h1>Projects</h1>
+
+    {% if not files %}
+      <p class="muted">No projects uploaded yet.</p>
+    {% endif %}
+
+    <div class="projects-grid">
+      {% for file in files %}
+      <div class="project-card">
+
+        <div class="project-header">
+          <span class="file-icon {{ file.split('.')[-1] }}"></span>
+          <h3>{{ file }}</h3>
+        </div>
+
+        <p class="project-description">
+          {{ descriptions.get(file, "No description provided.") }}
+        </p>
+
+        <a href="/uploads/projects/{{ file }}" class="project-link">
+          Download →
+        </a>
+
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  {% else %}
-    <p>No projects uploaded yet.</p>
-  {% endif %}
-</section>
+  </section>
+
+</main>
 
 <footer class="footer">
-  © {{ year }}
+  © {{ year }} Tech Kamau
 </footer>
 
-</div>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
