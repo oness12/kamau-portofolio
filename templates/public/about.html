@@ -1,77 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Projects — Tech Kamau</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Tech Kamau</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<!-- MOBILE SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/projects">Projects</a>
-  <a href="/contact">Contact</a>
-  <a href="/resume">CV</a>
-</div>
+<div class="page">
 
-<!-- NAV (SAME AS HOME) -->
-<header class="nav">
-  <div class="nav-inner">
+<header class="hero">
+  <nav class="nav">
     <a href="/" class="brand">Tech Kamau</a>
-
-    <nav class="nav-links">
+    <div class="nav-links">
       <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/projects" class="active">Projects</a>
+      <a href="/about" class="active">About</a>
+      <a href="/projects">Projects</a>
       <a href="/contact">Contact</a>
       <a href="/resume">CV</a>
-    </nav>
+    </div>
+  </nav>
 
-    <button class="hamburger" id="hamburger">☰</button>
+  <div class="hero-content">
+    <h1>About Me</h1>
+    <p>Data Analyst | Economics Graduate</p>
   </div>
 </header>
 
-<main class="container">
+<section class="section about-content">
+  <p>
+    I am a data analyst with a strong background in economics and a passion for
+    turning raw data into actionable insights.
+  </p>
 
-  <section class="section">
-    <h1>Projects</h1>
+  <p>
+    I work with Python, SQL, Excel, and Tableau to analyze trends, build dashboards,
+    and support data-driven decision making.
+  </p>
 
-    {% if not files %}
-      <p class="muted">No projects uploaded yet.</p>
-    {% endif %}
-
-    <div class="projects-grid">
-      {% for file in files %}
-      <div class="project-card">
-
-        <div class="project-header">
-          <span class="file-icon {{ file.split('.')[-1] }}"></span>
-          <h3>{{ file }}</h3>
-        </div>
-
-        <p class="project-description">
-          {{ descriptions.get(file, "No description provided.") }}
-        </p>
-
-        <a href="/uploads/projects/{{ file }}" class="project-link">
-          Download →
-        </a>
-
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-
-</main>
+  <p>
+    My focus is on clarity, accuracy, and impact — making data understandable
+    for both technical and non-technical audiences.
+  </p>
+</section>
 
 <footer class="footer">
-  © {{ year }} Tech Kamau
+  © {{ year }}
 </footer>
 
-<script src="{{ url_for('static', filename='main.js') }}"></script>
+</div>
+
 </body>
 </html>

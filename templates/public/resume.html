@@ -1,66 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact — Tech Kamau</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Tech Kamau</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<!-- MOBILE SIDEBAR -->
-<div class="sidebar" id="sidebar">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/projects">Projects</a>
-  <a href="/contact">Contact</a>
-  <a href="/resume">CV</a>
-</div>
+<div class="page">
 
-<!-- HEADER (MATCHES ABOUT PAGE) -->
-<header class="nav">
-  <div class="nav-inner">
+<!-- HEADER -->
+<header class="hero">
+  <nav class="nav">
     <a href="/" class="brand">Tech Kamau</a>
 
-    <nav class="nav-links">
+    <div class="nav-links">
       <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/projects">Projects</a>
-      <a href="/contact" class="active">Contact</a>
-      <a href="/resume">CV</a>
-    </nav>
+      <a href="/contact">Contact</a>
+      <a href="/resume" class="active">CV</a>
+    </div>
+  </nav>
 
-    <button class="hamburger" id="hamburger">☰</button>
+  <div class="hero-content">
+    <h1>Curriculum Vitae</h1>
+    <p>View or download my professional CV.</p>
   </div>
 </header>
 
-<main class="container">
-  <section class="section">
-    <h1>Get in Touch</h1>
+<!-- CV SECTION -->
+<section class="section">
+  <div class="cv-card">
+    <iframe src="/cv"></iframe>
 
-    <p class="muted">
-      Feel free to reach out for collaborations, opportunities, or questions.
-    </p>
-
-    <div class="contact-actions">
-      <a href="mailto:kamauthetech@gmail.com" class="btn primary">
-        Email me
-      </a>
-      <a href="{{ contact.github }}" class="btn secondary" target="_blank">
-        GitHub
-      </a>
-      <a href="{{ contact.linkedin }}" class="btn secondary" target="_blank">
-        LinkedIn
-      </a>
+    <div class="cv-actions">
+      <a href="/cv" class="btn primary" download>Download CV</a>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
 <footer class="footer">
-  © {{ year }} Tech Kamau
+  © {{ year }}
 </footer>
 
-<script src="{{ url_for('static', filename='main.js') }}"></script>
+</div>
+
 </body>
 </html>

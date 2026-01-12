@@ -4,34 +4,54 @@
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="admin">
+<body>
+
+<div class="admin-page">
 
 <h1>Admin Dashboard</h1>
 
+<!-- UPLOAD CV -->
 <section class="admin-card">
-  <h2>Upload Project</h2>
-  <form method="POST" enctype="multipart/form-data" action="/admin/upload-project-file">
-    <input type="file" name="file" required>
-    <textarea name="description" placeholder="Project description" required></textarea>
-    <button type="submit">Upload</button>
+  <h2>Upload CV</h2>
+  <form action="/admin/upload-cv" method="POST" enctype="multipart/form-data">
+    <input type="file" name="cv" required>
+    <button class="btn primary">Upload CV</button>
   </form>
 </section>
 
-<section>
+<!-- PROJECT UPLOAD -->
+<section class="admin-card">
+  <h2>Upload Project</h2>
+  <form action="/admin/upload-project-file" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <textarea name="description" placeholder="Project description" required></textarea>
+    <button class="btn primary">Upload Project</button>
+  </form>
+</section>
+
+<!-- EXISTING PROJECTS -->
+<section class="admin-card">
   <h2>Existing Projects</h2>
 
   {% for file in files %}
-  <div class="admin-project">
+  <div class="project-admin-row">
     <strong>{{ file }}</strong>
-    <p>{{ descriptions.get(file, "") }}</p>
 
-    <form method="POST" action="/admin/delete-project">
+    <form action="/admin/edit-description" method="POST">
       <input type="hidden" name="filename" value="{{ file }}">
-      <button class="danger">Delete</button>
+      <textarea name="description">{{ descriptions.get(file, "") }}</textarea>
+      <button class="btn secondary">Save</button>
+    </form>
+
+    <form action="/admin/delete-project" method="POST">
+      <input type="hidden" name="filename" value="{{ file }}">
+      <button class="btn danger">Delete</button>
     </form>
   </div>
   {% endfor %}
 </section>
+
+</div>
 
 </body>
 </html>
