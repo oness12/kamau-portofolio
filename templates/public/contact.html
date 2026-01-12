@@ -1,39 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Contact | Tech Kamau</title>
+  <meta charset="UTF-8">
+  <title>Contact — Tech Kamau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="page">
+<!-- MOBILE SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/projects">Projects</a>
+  <a href="/contact">Contact</a>
+  <a href="/resume">CV</a>
+</div>
 
-<nav class="nav">
-  <a href="/" class="brand">Tech Kamau</a>
-  <div class="nav-right">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/projects">Projects</a>
-    <a href="/contact" class="active">Contact</a>
-    <a href="/resume">CV</a>
+<!-- HEADER (MATCHES ABOUT PAGE) -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand">Tech Kamau</a>
+
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact" class="active">Contact</a>
+      <a href="/resume">CV</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger">☰</button>
   </div>
-</nav>
+</header>
 
-<section class="section">
-  <h2 class="section-title">Get in Touch</h2>
+<main class="container">
+  <section class="section">
+    <h1>Get in Touch</h1>
 
-  <div class="contact-actions">
-    <a href="mailto:kamauthetech@gmail.com" class="btn">Email me</a>
-    <a href="{{ contact.github }}" class="btn" target="_blank">GitHub</a>
-    <a href="{{ contact.linkedin }}" class="btn" target="_blank">LinkedIn</a>
-  </div>
-</section>
+    <p class="muted">
+      Feel free to reach out for collaborations, opportunities, or questions.
+    </p>
+
+    <div class="contact-actions">
+      <a href="mailto:kamauthetech@gmail.com" class="btn primary">
+        Email me
+      </a>
+      <a href="{{ contact.github }}" class="btn secondary" target="_blank">
+        GitHub
+      </a>
+      <a href="{{ contact.linkedin }}" class="btn secondary" target="_blank">
+        LinkedIn
+      </a>
+    </div>
+  </section>
+</main>
 
 <footer class="footer">
-  © {{ year }}
+  © {{ year }} Tech Kamau
 </footer>
 
-</div>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
