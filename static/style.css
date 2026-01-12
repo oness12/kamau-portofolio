@@ -213,3 +213,48 @@ body {
     flex-direction: column;
   }
 }
+/* ================= ANIMATED ROLE ================= */
+
+.animated-role {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlide 0.8s ease forwards;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= CORE STRENGTH CARDS ================= */
+
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.strength-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: transform 0.3s ease;
+}
+
+.strength-card:hover {
+  transform: translateY(-6px);
+}
+
+.strength-card h4 {
+  margin-bottom: 8px;
+}
+
+/* ================= PIE CHART ================= */
+
+.chart-wrapper {
+  max-width: 420px;
+  margin: 0 auto;
+}

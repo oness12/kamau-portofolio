@@ -2,40 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About | Tech Kamau</title>
+  <title>About — Tech Kamau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="page">
-
-<header class="hero">
-  <nav class="nav">
+<header class="nav">
+  <div class="nav-inner">
     <a href="/" class="brand">Tech Kamau</a>
-    <div class="nav-right">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/about" class="nav-link active">About</a>
-      <a href="/projects" class="nav-link">Projects</a>
-      <a href="/contact" class="nav-link">Contact</a>
-      <a href="/resume" class="nav-link">CV</a>
-    </div>
-  </nav>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume">CV</a>
+    </nav>
+  </div>
 </header>
 
-<section class="section">
-  <h2 class="section-title">About Me</h2>
-  <p class="text">
-    I am a data analyst with a strong background in economics. I focus on transforming raw data into insights
-    that support better decision-making through analysis, visualization, and reporting.
-  </p>
-</section>
+<main class="container">
+
+  <section class="section">
+    <h1>About Me</h1>
+
+    <p>
+      I am a data analyst with a background in economics, focused on
+      transforming data into insights that drive smarter decisions.
+    </p>
+
+    <p>
+      My work combines analytical thinking, technical skills, and
+      business understanding to uncover trends, optimize performance,
+      and communicate results clearly.
+    </p>
+
+    <ul class="about-list">
+      <li>Strong foundation in statistics and economics</li>
+      <li>Hands-on experience with real-world datasets</li>
+      <li>Clear data storytelling for technical and non-technical audiences</li>
+      <li>Continuous learner in analytics and automation</li>
+    </ul>
+  </section>
+
+</main>
 
 <footer class="footer">
-  <p>© {{ year }}</p>
+  © {{ year }} Tech Kamau
 </footer>
-
-</div>
 
 </body>
 </html>
