@@ -13,16 +13,29 @@
 <!-- HEADER -->
 <header class="hero">
   <nav class="nav">
-    <a href="/" class="brand">Tech Kamau</a>
+    <div class="nav-inner">
+      <a href="/" class="brand">Tech Kamau</a>
 
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/projects">Projects</a>
-      <a href="/contact">Contact</a>
-      <a href="/resume" class="active">CV</a>
+      <div class="nav-links desktop-nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume" class="active">CV</a>
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false">☰</button>
     </div>
   </nav>
+
+  <div class="sidebar" id="sidebar" role="menu" aria-hidden="true">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/contact">Contact</a>
+    <a href="/resume">CV</a>
+  </div>
 
   <div class="hero-content">
     <h1>Curriculum Vitae</h1>
@@ -32,11 +45,13 @@
 
 <!-- CV SECTION -->
 <section class="section">
-  <div class="cv-card">
-    <iframe src="/cv"></iframe>
+  <div class="cv-card container">
+    <div class="cv-viewer">
+      <iframe src="/cv" title="Curriculum Vitae" frameborder="0" allowfullscreen></iframe>
+    </div>
 
     <div class="cv-actions">
-      <a href="/cv" class="btn primary" download>Download CV</a>
+      <a href="/cv" class="btn primary" download aria-label="Download CV">Download CV</a>
     </div>
   </div>
 </section>
@@ -47,5 +62,6 @@
 
 </div>
 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
