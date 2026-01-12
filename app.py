@@ -12,8 +12,15 @@ import json
 import uuid
 
 app = Flask(__name__)
-app.secret_key = "local-admin-secret"
-ADMIN_PIN = "1234"
+# use environment variables for secrets in production, with safe defaults for local development
+app.secret_key = os.environ.get("SECRET_KEY", "local-admin-secret")
+ADMIN_PIN = os.environ.get("ADMIN_PIN", "8154")
+
+
+@app.context_processor
+def inject_admin_flag():
+    # make `admin` available to all templates
+    return {"admin": session.get("admin", False)}
 
 # =========================
 # PATHS
@@ -138,6 +145,14 @@ def admin_dashboard():
         files=files,
         descriptions=descriptions
     )
+
+
+@app.route('/admin/logout', methods=['POST'])
+def admin_logout():
+    if not session.get('admin'):
+        abort(403)
+    session.pop('admin', None)
+    return redirect('/')
 
 # =========================
 # ADMIN ACTIONS

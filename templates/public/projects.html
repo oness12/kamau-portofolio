@@ -90,7 +90,9 @@
           <h3>No projects yet</h3>
           <p class="muted">There are currently no project files uploaded. If you own this site, you can upload projects via the admin panel.</p>
           <p>
-            <a href="/admin" class="btn secondary">Open Admin</a>
+            {% if admin %}
+              <a href="/admin" class="btn secondary">Open Admin</a>
+            {% endif %}
             <a href="/" class="btn" style="margin-left:8px;">Back Home</a>
           </p>
         </div>
