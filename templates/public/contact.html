@@ -22,11 +22,11 @@
         <a href="/resume">CV</a>
         <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
       </div>
-      <button class="hamburger" id="hamburger">☰</button>
+      <button class="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false">☰</button>
     </div>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="sidebar" id="sidebar" role="menu" aria-hidden="true">
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/projects">Projects</a>

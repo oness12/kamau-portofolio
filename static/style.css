@@ -88,12 +88,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  transition: left 0.3s ease;
+  /* animate with transform for smoother rendering */
+  transform: translateX(-12px);
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), left 260ms ease;
   z-index: 999;
 }
 
 .sidebar.open {
   left: 0;
+  transform: translateX(0);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
 }
 
 .sidebar a {
@@ -356,10 +360,6 @@ body {
   .desktop-nav {
     display: none;
   }
-
-  .hamburger {
-    display: block;
-  }
 }
 
 .about-content {
@@ -371,4 +371,33 @@ body {
 .about-content p {
   margin-bottom: 18px;
   color: var(--muted);
+}
+
+/* Accessibility and motion preferences */
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Focus-visible for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(92,124,250,0.28);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
