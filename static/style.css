@@ -345,3 +345,131 @@ body {
   height: 2px;
   background: var(--primary);
 }
+/* ================= LAYOUT ================= */
+
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  border-bottom: 1px solid #1e293b;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #94a3b8;
+}
+
+.nav-links a.active {
+  color: #e5e7eb;
+  border-bottom: 2px solid #5c7cfa;
+  padding-bottom: 4px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+}
+
+.mobile-menu a {
+  padding: 14px 20px;
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.project-card {
+  display: flex;
+  gap: 16px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.project-icon {
+  font-size: 2rem;
+}
+
+.project-content h3 {
+  margin: 0 0 8px;
+}
+
+.project-content p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* ================= BUTTON ================= */
+
+.btn.primary {
+  background: #5c7cfa;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

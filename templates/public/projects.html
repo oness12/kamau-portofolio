@@ -12,24 +12,24 @@
 <div class="page">
 
   <!-- ================= HEADER ================= -->
-  <header class="hero">
-    <nav class="nav">
-      <div class="nav-left">
-        <a href="/" class="brand">Tech Kamau</a>
-      </div>
+  <header class="header">
+    <div class="header-inner">
 
-      <div class="nav-right desktop-nav">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about" class="nav-link">About</a>
-        <a href="/projects" class="nav-link active">Projects</a>
-        <a href="/contact" class="nav-link">Contact</a>
-        <a href="/resume" class="nav-link">CV</a>
+      <a href="/" class="brand">Tech Kamau</a>
+
+      <nav class="nav-links desktop-nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects" class="active">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume">CV</a>
         <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-      </div>
+      </nav>
 
       <button class="hamburger" id="hamburger">☰</button>
-    </nav>
+    </div>
 
+    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="/">Home</a>
       <a href="/about">About</a>
@@ -37,56 +37,62 @@
       <a href="/contact">Contact</a>
       <a href="/resume">CV</a>
     </div>
-
-    <div class="hero-content">
-      <h1 class="hero-name">Projects</h1>
-      <p class="hero-tagline">
-        Data analysis projects, datasets, scripts, and reports.
-      </p>
-    </div>
   </header>
 
-  <!-- ================= PROJECTS ================= -->
-  <section class="section">
-    <h2 class="section-title">Project Files</h2>
+  <!-- ================= MAIN ================= -->
+  <main class="container">
 
-    {% if files %}
-    <div class="projects-grid">
-      {% for file in files %}
-      <article class="project-card">
+    <section class="hero-section">
+      <h1>Projects</h1>
+      <p class="subtitle">
+        Data analysis projects, datasets, scripts, and reports.
+      </p>
+    </section>
 
-        <div class="project-icon">
-          {% if file.lower().endswith('.pdf') %}📄
-          {% elif file.lower().endswith('.xlsx') or file.lower().endswith('.xls') %}📊
-          {% elif file.lower().endswith('.csv') %}🗂️
-          {% elif file.lower().endswith('.py') %}🐍
-          {% elif file.lower().endswith('.sql') %}🗄️
-          {% else %}📁
-          {% endif %}
-        </div>
+    <section>
+      <h2>Project Files</h2>
 
-        <h3 class="project-title">
-          {{ file.split("_", 1)[1] if "_" in file else file }}
-        </h3>
+      {% if files %}
+      <div class="projects-grid">
+        {% for file in files %}
+        <article class="project-card">
 
-        <p class="project-description">
-          {{ descriptions.get(file, "No description provided.") }}
-        </p>
+          <div class="project-icon">
+            {% if file.lower().endswith('.pdf') %}📄
+            {% elif file.lower().endswith('.xlsx') or file.lower().endswith('.xls') %}📊
+            {% elif file.lower().endswith('.csv') %}🗂️
+            {% elif file.lower().endswith('.py') %}🐍
+            {% elif file.lower().endswith('.sql') %}🗄️
+            {% else %}📁
+            {% endif %}
+          </div>
 
-        <a href="/uploads/projects/{{ file }}" class="btn primary" download>
-          Download
-        </a>
+          <div class="project-content">
+            <h3>{{ file.split("_", 1)[1] if "_" in file else file }}</h3>
+            <p>{{ descriptions.get(file, "No description provided.") }}</p>
 
-      </article>
-      {% endfor %}
-    </div>
-    {% else %}
-      <p>No projects uploaded yet.</p>
-    {% endif %}
-  </section>
+            <a
+              href="/uploads/projects/{{ file }}"
+              class="btn primary"
+              download
+            >
+              Download
+            </a>
+          </div>
+
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+        <p>No projects uploaded yet.</p>
+      {% endif %}
+
+    </section>
+
+  </main>
 
   <footer class="footer">
-    <p>© {{ year }}</p>
+    © {{ year }}
   </footer>
 
 </div>
