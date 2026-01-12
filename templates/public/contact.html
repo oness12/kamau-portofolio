@@ -41,9 +41,15 @@
 </header>
 
 <section class="section contact-actions">
-  <a class="btn primary" href="mailto:{{ contact.email }}">Email me</a>
-  <a class="btn secondary" href="{{ contact.github }}" target="_blank" rel="noopener">GitHub</a>
-  <a class="btn secondary" href="{{ contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+  <div class="container">
+    <div class="contact-controls">
+      <a id="contact-email" class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=kamauthetech@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Compose email to kamauthetech@gmail.com">Email me</a>
+      <a class="btn secondary" href="{{ contact.github }}" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn secondary" href="{{ contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <p class="contact-hint muted">Prefer your mail app? <a href="mailto:kamauthetech@gmail.com">Open mail client</a></p>
+  </div>
 </section>
 
 <footer class="footer">

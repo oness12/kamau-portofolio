@@ -537,3 +537,20 @@ html[data-theme="light"] {
   --border: #e6e9f0;
   --primary: #3b82f6;
 }
+
+/* ================= CONTACT ACTIONS ================= */
+.contact-actions .contact-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.contact-actions .contact-hint {
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 620px) {
+  .contact-actions .contact-controls { flex-direction: column; align-items: stretch; }
+  .contact-actions .contact-controls .btn { width: 100%; }
+}
