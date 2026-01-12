@@ -1,21 +1,41 @@
-/* ========== BASE ========== */
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0f1115;
-  color: #e5e7eb;
+:root {
+  --bg: #0f1115;
+  --bg-alt: #161a22;
+  --text: #e6e6eb;
+  --muted: #a0a4b8;
+  --border: #252a36;
+  --primary: #5c7cfa;
+  --radius: 12px;
+  --max-width: 1100px;
 }
 
-a { text-decoration: none; }
+* {
+  box-sizing: border-box;
+}
 
-/* ========== NAV DESKTOP ========== */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ================= NAVBAR ================= */
+
 .nav {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .nav-links {
@@ -23,107 +43,171 @@ a { text-decoration: none; }
   gap: 24px;
 }
 
-.nav-link {
-  color: #9ca3af;
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
   font-weight: 500;
 }
 
-.nav-link.active,
-.nav-link:hover {
-  color: #ffffff;
+.nav-links a:hover {
+  color: var(--text);
 }
 
-/* ========== HERO ========== */
-.hero-content {
-  max-width: 700px;
-  margin: 80px auto;
+/* ================= HAMBURGER ================= */
+
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* ================= MOBILE SIDEBAR ================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: min(80%, 300px);
+  height: 100vh;
+  background: var(--bg-alt);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1.05rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ================= PAGE ================= */
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  padding: 100px 0 70px;
   text-align: center;
 }
 
-.hero-name {
-  font-size: 3rem;
-  font-weight: 800;
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  margin-bottom: 14px;
 }
 
-.hero-role {
-  color: #5c7cfa;
-  margin: 10px 0;
+.hero h2 {
+  color: var(--primary);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-.hero-actions {
-  margin-top: 28px;
+.hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* ================= BUTTONS ================= */
+
+.btn-group {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 16px;
 }
 
-/* ========== BUTTONS ========== */
 .btn {
-  padding: 12px 20px;
-  border-radius: 12px;
+  padding: 12px 22px;
+  border-radius: var(--radius);
   font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .btn.primary {
-  background: #5c7cfa;
+  background: var(--primary);
+  border-color: var(--primary);
   color: #fff;
 }
 
-.btn.secondary {
-  border: 1px solid #334155;
-  color: #e5e7eb;
+/* ================= SECTIONS ================= */
+
+.section {
+  padding: 80px 0;
 }
 
-/* ========== PIE CHART ========== */
-.chart-wrapper {
-  max-width: 360px;
-  margin: 0 auto;
-}
-
-/* ========== FOOTER ========== */
-.footer {
-  padding: 60px 20px;
+.section h3 {
   text-align: center;
-  color: #9ca3af;
+  margin-bottom: 30px;
 }
 
-/* ========== MOBILE BOTTOM NAV ========== */
-.mobile-bottom-nav {
-  display: none;
+/* ================= SKILLS ================= */
+
+.skill {
+  margin-bottom: 18px;
 }
 
-/* ========== RESPONSIVE ========== */
+.skill span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.skill-bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: var(--primary);
+  width: 0;
+  transition: width 1s ease;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
-
-  .desktop-nav {
+  .nav-links {
     display: none;
   }
 
-  .mobile-bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: #020617;
-    border-top: 1px solid #1e293b;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 1000;
+  .hamburger {
+    display: block;
   }
 
-  .mobile-bottom-nav a {
-    color: #9ca3af;
-    font-size: 0.85rem;
-    font-weight: 500;
+  .hero {
+    padding-top: 70px;
   }
 
-  .mobile-bottom-nav a.active {
-    color: #5c7cfa;
-  }
-
-  .hero-content {
-    margin-bottom: 120px;
+  .btn-group {
+    flex-direction: column;
   }
 }
