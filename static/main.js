@@ -8,9 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Skill bars animation
   document.querySelectorAll(".skill-fill").forEach(bar => {
-    const level = bar.getAttribute("data-level");
+    const level = bar.dataset.level;
     bar.style.width = level + "%";
   });
 });

@@ -5,6 +5,7 @@
   --muted: #a0a4b8;
   --border: #252a36;
   --primary: #5c7cfa;
+
   --radius: 12px;
   --max-width: 1100px;
 }
@@ -20,9 +21,21 @@ body {
   color: var(--text);
 }
 
-/* ================= NAVBAR ================= */
+/* ================= LAYOUT ================= */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ================= NAV ================= */
 
 .nav {
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 18px 20px;
@@ -40,7 +53,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 26px;
 }
 
 .nav-links a {
@@ -53,8 +66,6 @@ body {
   color: var(--text);
 }
 
-/* ================= HAMBURGER ================= */
-
 .hamburger {
   display: none;
   font-size: 1.6rem;
@@ -64,19 +75,19 @@ body {
   cursor: pointer;
 }
 
-/* ================= MOBILE SIDEBAR ================= */
+/* ================= SIDEBAR (MOBILE) ================= */
 
 .sidebar {
   position: fixed;
   top: 0;
   left: -100%;
-  width: min(80%, 300px);
+  width: min(85%, 320px);
   height: 100vh;
   background: var(--bg-alt);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   transition: left 0.3s ease;
   z-index: 999;
 }
@@ -86,57 +97,48 @@ body {
 }
 
 .sidebar a {
-  text-decoration: none;
   color: var(--text);
+  text-decoration: none;
   font-size: 1.05rem;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
 
-/* ================= PAGE ================= */
-
-.page {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 20px;
-}
+/* ================= HERO ================= */
 
 .hero {
-  padding: 100px 0 70px;
-  text-align: center;
+  padding: 100px 0 80px;
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 3.4rem);
-  margin-bottom: 14px;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin-bottom: 12px;
 }
 
 .hero h2 {
   color: var(--primary);
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  margin-bottom: 18px;
 }
 
 .hero p {
   max-width: 720px;
-  margin: 0 auto;
   color: var(--muted);
 }
 
 /* ================= BUTTONS ================= */
 
-.btn-group {
-  margin-top: 30px;
+.btn-row {
+  margin-top: 28px;
   display: flex;
-  justify-content: center;
   gap: 16px;
 }
 
 .btn {
   padding: 12px 22px;
   border-radius: var(--radius);
-  font-weight: 600;
   text-decoration: none;
+  font-weight: 600;
   border: 1px solid var(--border);
   color: var(--text);
 }
@@ -153,20 +155,20 @@ body {
   padding: 80px 0;
 }
 
-.section h3 {
-  text-align: center;
+.section-title {
+  font-size: 1.9rem;
   margin-bottom: 30px;
 }
 
 /* ================= SKILLS ================= */
 
 .skill {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.skill span {
-  display: block;
+.skill-name {
   margin-bottom: 6px;
+  font-size: 0.95rem;
 }
 
 .skill-bar {
@@ -207,7 +209,7 @@ body {
     padding-top: 70px;
   }
 
-  .btn-group {
+  .btn-row {
     flex-direction: column;
   }
 }

@@ -17,64 +17,68 @@
   <a href="/resume">CV</a>
 </div>
 
-<!-- Navbar -->
-<nav class="nav">
-  <a href="/" class="brand">Tech Kamau</a>
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/projects">Projects</a>
-    <a href="/contact">Contact</a>
-    <a href="/resume">CV</a>
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand">Tech Kamau</a>
+
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume">CV</a>
+    </nav>
+
+    <button class="hamburger" id="hamburger">☰</button>
   </div>
-  <button class="hamburger" id="hamburger">☰</button>
-</nav>
+</header>
 
-<div class="page">
+<main class="container">
 
-<section class="hero">
-  <h1>Tech Kamau</h1>
-  <h2>Data Analyst | Economics Graduate</h2>
-  <p>
-    Turning complex datasets into clear, actionable insights using Python,
-    SQL, Excel, and Tableau.
-  </p>
+  <section class="hero">
+    <h1>Tech Kamau</h1>
+    <h2>Data Analyst | Economics Graduate</h2>
+    <p>
+      Turning complex datasets into clear, actionable insights using
+      Python, SQL, Excel, and Tableau.
+    </p>
 
-  <div class="btn-group">
-    <a href="/projects" class="btn primary">View Projects</a>
-    <a href="/cv" class="btn">Download CV</a>
-  </div>
-</section>
+    <div class="btn-row">
+      <a href="/projects" class="btn primary">View Projects</a>
+      <a href="/cv" class="btn">Download CV</a>
+    </div>
+  </section>
 
-<section class="section">
-  <h3>Skills</h3>
+  <section class="section">
+    <h3 class="section-title">Skills</h3>
 
-  <div class="skill">
-    <span>Python</span>
-    <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
-  </div>
+    <div class="skill">
+      <div class="skill-name">Python</div>
+      <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+    </div>
 
-  <div class="skill">
-    <span>SQL</span>
-    <div class="skill-bar"><div class="skill-fill" data-level="85"></div></div>
-  </div>
+    <div class="skill">
+      <div class="skill-name">SQL</div>
+      <div class="skill-bar"><div class="skill-fill" data-level="85"></div></div>
+    </div>
 
-  <div class="skill">
-    <span>Excel</span>
-    <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
-  </div>
+    <div class="skill">
+      <div class="skill-name">Excel</div>
+      <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+    </div>
 
-  <div class="skill">
-    <span>Tableau</span>
-    <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
-  </div>
-</section>
+    <div class="skill">
+      <div class="skill-name">Tableau</div>
+      <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+    </div>
+  </section>
+
+</main>
 
 <footer class="footer">
   © {{ year }} Tech Kamau
 </footer>
-
-</div>
 
 <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
