@@ -80,3 +80,34 @@ if (skillFills.length) {
 
   skillFills.forEach(el => observer.observe(el));
 }
+
+// Theme toggle: persist selection in localStorage and apply data-theme on <html>
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    if (themeToggle) themeToggle.textContent = '☀️';
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', 'true');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    if (themeToggle) themeToggle.textContent = '🌙';
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', 'false');
+  }
+}
+
+// initialize from localStorage
+(function() {
+  try {
+    const saved = localStorage.getItem('site-theme');
+    if (saved === 'light') applyTheme('light');
+  } catch (e) {/* ignore */}
+})();
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const next = isLight ? 'dark' : 'light';
+    applyTheme(next === 'light' ? 'light' : 'dark');
+    try { localStorage.setItem('site-theme', next === 'light' ? 'light' : 'dark'); } catch (e) {}
+  });
+}

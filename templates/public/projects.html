@@ -12,24 +12,24 @@
 <div class="page">
 
   <!-- ================= HEADER ================= -->
-  <header class="header">
-    <div class="header-inner">
+  <header class="hero">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="brand">Tech Kamau</a>
 
-      <a href="/" class="brand">Tech Kamau</a>
+        <div class="nav-links desktop-nav">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/projects" class="active">Projects</a>
+          <a href="/contact">Contact</a>
+          <a href="/resume">CV</a>
+          <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
 
-      <nav class="nav-links desktop-nav">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/projects" class="active">Projects</a>
-        <a href="/contact">Contact</a>
-        <a href="/resume">CV</a>
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-      </nav>
+        <button class="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false">☰</button>
+      </div>
+    </nav>
 
-      <button class="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false">☰</button>
-    </div>
-
-    <!-- Mobile menu -->
     <div class="sidebar" id="sidebar" role="menu" aria-hidden="true">
       <a href="/">Home</a>
       <a href="/about">About</a>
@@ -84,7 +84,17 @@
         {% endfor %}
       </div>
       {% else %}
-        <p>No projects uploaded yet.</p>
+      <div class="empty-state">
+        <div class="empty-illustration">🗂️</div>
+        <div>
+          <h3>No projects yet</h3>
+          <p class="muted">There are currently no project files uploaded. If you own this site, you can upload projects via the admin panel.</p>
+          <p>
+            <a href="/admin" class="btn secondary">Open Admin</a>
+            <a href="/" class="btn" style="margin-left:8px;">Back Home</a>
+          </p>
+        </div>
+      </div>
       {% endif %}
 
     </section>
